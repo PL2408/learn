@@ -1,0 +1,23 @@
+https://www.youtube.com/playlist?list=PLiH9_MU-6RjI9gdFqmvUfKRfw_zRxIb6o
+Video 1:
+
+Video 2:
+
+Video 10:
+Vertical and Horizontal scaling
+
+vertical scaling is an increase in the power of an existing machine
+
+horizontal scaling is the use of additional machines to increase power
+
+such types of balance weights: V2 works through protocols TCP,UPD,TLS
+
+V2 7 works with WEB programs, protocols HTTP, HTTPS
+
+V1base balance weight, stale
+
+balance weights use active and passive checks of nodes
+
+and something about ‘'Listener’' and ‘'Target group’', i didn’t quite understand
+
+and something about ‘'sticky’' didn’t understand also. How to do balance weight sticky?
