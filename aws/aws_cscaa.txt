@@ -1,8 +1,46 @@
 https://www.youtube.com/playlist?list=PLiH9_MU-6RjI9gdFqmvUfKRfw_zRxIb6o
 Video 1:
-introduction
-
+cloud computing and certification 
+aws provides its customers with access to services: data storage, computing power
+the tipe of cloud computing - public cloud, privat cloud, hybrid cloud
+The company has phisical servers, but  to increase data storage we can use AWS servises, like S3 [a large repository for deleting any amount of data from anywhere],ec2 [Elastic Computing Cloud]
 Video 2:
+programs can be scaled by automatic scaling and elastic balancing
+areas of study:
+one of the first exams is a specialist in cloud technology
+three areas of specialization: certified decision architect, DevOps engineer, DevOps administrator
+Video 3: admission criteria
+Practical experience of using computer network storage is required
+the course provides an opportunity to learn how to use services S3 [a large repository for deleting any amount of data from anywhere], ec2 [Elastic Computing Cloud], as well as part of a database
+practical experience in deploying and managing services AWS, as well as understanding the global infrastructure
+abbreviation of the specialty: SAA-C01 [assistant architect]
+cost $ 150, 130m 65 questions, passing score 720 out of 1000
+Video 4:
+practical work on creating an account AWS
+acquaintance with the interface, services, budget planning
+Video 5:
+regions and accessibility zones AWS
+these are the geographical areas that the SS uses to locate its infrastructure. There are regional and global services. zone 1 is the physical availability of capacity in a particular region (availability zone)
+to improve performance, you need to place the specimens in several areas of availability to avoid fault tolerance
+if one of the zones is not accessible, the consumer will still have access to the information
+Video 6:
+Service ec2[Elastic Computing Cloud]
+EBS [Elastic Block Store] storage of proprietary blocks for data storage
+ELB [Elastic Load Balancing] load balancer
+AMI [Amazon Machine Image] provides the information needed to run the instance
+tells about the types of instances, the possibility of their creation, the security group
+Video 7:
+instantiate ec2 using a protocol SSH
+practice session
+
+Video 8:
+a test that I did not pass
+Video 9:
+topic: see screen part9 about security group
+the topic of private and public IP was considered
+told about the elastic IP address by means of which other users can continue connection to the machine even after preliminary disconnection screen [elasticIP part9] and [elasticIP2 part9]
+User Data additional user settings that are stored in the instance
+AMI [Amazon Machine Image]
 
 Video 10:
 Vertical and Horizontal scaling
