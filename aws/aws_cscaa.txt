@@ -60,3 +60,4 @@ balance weights use active and passive checks of nodes
 and something about ‘'Listener’' and ‘'Target group’', i didn’t quite understand
 
 and something about ‘'sticky’' didn’t understand also. How to do balance weight sticky?
+Video 11: 27.06
