@@ -1,0 +1,10 @@
+ESC - mode for commands
+
+i - mode for Insert (type text)
+
+:w - write changes
+:q - quit
+
+:wq - write and quit
+
+:q! - done't write (save), just quit wihtout savings
