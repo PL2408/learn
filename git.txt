@@ -3,6 +3,7 @@ git clone - download repository from server
 git status - check status
 
 git pull - pulls latest changes from remote repository
+<my dailoy work with updates of some documents>
 git add . - add all changed files for commit
 git commit -m "comment for commit" - commit changes
 git push - push new commits to server
