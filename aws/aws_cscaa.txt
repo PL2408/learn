@@ -63,3 +63,17 @@ and something about ‘'sticky’' didn’t understand also. How to do balance w
 27.06
 created load balanser and ec2, combined machines creating target group. Set up security for accounts, created admin account to aws
 
+29.06
+listened to Vitaly's first lecture on networks
+about the types of cables used: coaxial, twisted pair, fiber. Initially, a LAN was created, which was connected using a HUB device. It sent data evenly to all computers on the network, and this was the first level of data transfer. he was replaced by a SWICH device that recognized data packets and sent them to the desired MAC address. then an IP protocol was created that works with a router and is essentially a global network. protocols ipv4, ipv6 and signal transmission by cables were considered. more details in the written synopsis.
+
+youtobe vieos about networks
+1. NAT [Network Address Translation] with PAT many devices can go online with the same address
+2. DNS servers. Resolver. what is it for, how does it recognize sites, what requests does it send?
+3. LAN-WAN, denotes networks depending on the scale and type of organization. LAN [Local Area Network] - local area network. WAN [Wide Area Network] is a global network. LAN - ethernet standart. WAN - HDLC, PPP [Point-to-Point Protocol] standarts
+4. The OSI seven-tier model is a transfer process
+ data, which was divided into 7 parts.
+- physical signal transmission [Ethernet]
+- channel [frame] data information
+- network: routing and IP. We send a DNS request and receive the answer in the form of the IP address and we substitute it in a package. Data encapsulation is the process of transferring data from the upper levels to the lower ones. Decapsulation is the opposite. Layer routing and protocols: RiP, OSPF, EIGRP, BGP.
+- at the fourth level secure data transmission by TCP, UPD protocols is carried out. TCP [Transmission Control Protocol] - loss-sensitive traffic. Provides control over data transfer. UPD [User Datagram Protocol]. Network engineers use the first four levels, the other three are used mainly by developers.
