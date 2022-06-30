@@ -3,12 +3,25 @@ listened to Vitaly's first lecture on networks
 about the types of cables used: coaxial, twisted pair, fiber. Initially, a LAN was created, which was connected using a HUB device. It sent data evenly to all computers on the network, and this was the first level of data transfer. he was replaced by a SWICH device that recognized data packets and sent them to the desired MAC address. then an IP protocol was created that works with a router and is essentially a global network. protocols ipv4, ipv6 and signal transmission by cables were considered. more details in the written synopsis.
 
 youtobe vieos about networks
-1. NAT [Network Address Translation] with PAT many devices can go online with the same address
-2. DNS servers. Resolver. what is it for, how does it recognize sites, what requests does it send?
-3. LAN-WAN, denotes networks depending on the scale and type of organization. LAN [Local Area Network] - local area network. WAN [Wide Area Network] is a global network. LAN - ethernet standart. WAN - HDLC, PPP [Point-to-Point Protocol] standarts
-4. The OSI seven-tier model is a transfer process
+1. 
+NAT [Network Address Translation] with PAT many devices can go online with the same address
+2. 
+DNS servers. Resolver. what is it for, how does it recognize sites, what requests does it send?
+3. 
+LAN-WAN, denotes networks depending on the scale and type of organization. LAN [Local Area Network] - local area network. WAN [Wide Area Network] is a global network. LAN - ethernet standart. WAN - HDLC, PPP [Point-to-Point Protocol] standarts
+4. 
+The OSI seven-tier model is a transfer process
  data, which was divided into 7 parts.
 - physical signal transmission [Ethernet]
 - channel [frame] data information
 - network: routing and IP. We send a DNS request and receive the answer in the form of the IP address and we substitute it in a package. Data encapsulation is the process of transferring data from the upper levels to the lower ones. Decapsulation is the opposite. Layer routing and protocols: RiP, OSPF, EIGRP, BGP.
 - at the fourth level secure data transmission by TCP, UPD protocols is carried out. TCP [Transmission Control Protocol] - loss-sensitive traffic. Provides control over data transfer. UPD [User Datagram Protocol]. Network engineers use the first four levels, the other three are used mainly by developers.
+5. 
+VPN [Virtual Private Network] enables a virtual connection to the network for remote access. Connection types:
+- site-to-site
+- remote access
+A tunnel is built through the router to the same equipment in another location.
+When building a tunnel from an individual device to the desired A tunnel is built through the router to the same equipment in another location VPN server, the IP address will be changed. All information transmitted through the VPN gateway is encrypted with an encryption algorithm. Algorithms are divided into symmetric and asymmetric. Symmetric ones use the same key for both encryption and decryption. Example: AES [Advanced Encruption Standart]
+Asymmetric uses two different keys, open for encryption and closed for decryption. PCA is an example of such encryption. Algorithms may or may not be crypto-resistant. A non-cryptoproof example: DES [Data Encription Standart] the key length of which is 56 bits, crypto-resistant 256 bit.
+6.
+Ethernet - a family of packet data transmission technologies of the 802.3 group. It is used to build LAN local networks. In the OSІ, it is on the first two levels. The most popular cable for connecting Ethernet UTP 5 [Unshielded Twisted Pair]
