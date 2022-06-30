@@ -25,3 +25,24 @@ When building a tunnel from an individual device to the desired A tunnel is buil
 Asymmetric uses two different keys, open for encryption and closed for decryption. PCA is an example of such encryption. Algorithms may or may not be crypto-resistant. A non-cryptoproof example: DES [Data Encription Standart] the key length of which is 56 bits, crypto-resistant 256 bit.
 6.
 Ethernet - a family of packet data transmission technologies of the 802.3 group. It is used to build LAN local networks. In the OSІ, it is on the first two levels. The most popular cable for connecting Ethernet UTP 5 [Unshielded Twisted Pair]
+7.
+TelNet [Teletype Network]
+with its help, you can remotely connect to a network device and manage it. By default, telnet uses TSP port 23. When connecting to telnet, you can use text commands to set server commands, run programs, create and delete files and directories, and manage network parameters. All passwords and logins are transmitted in open form.
+SSH [Secure shell] built for secure remote access and listens carefully TCP. All commands will be encrypted with a unique key. To connect remotely, the device must act as a TelNet/SSH server and must be the TelNet/SSH client with which the connection is initiated. For this, you need a program that acts as a terminal emulator: for example PUTTY.
+8.
+FireWall - an active network device responsible for infrastructure security. It works on the third level of the OSI model. Protects the global network from unauthorized access from external untrusted networks. It works by passing and receiving only safe files, using ACL [Access Control List] access control lists. Two tipes of FireWall:
+- Statefull
+- Stateless
+Host-Based FireWall- software.
+DevOps - Development and Operations
+a model of interaction between those who write code and those who make this code work, roll it out into production, manage servers. Such a profession is called a DevOps engineer. Basic things that a DevOps engineer should know:
+- easy to navigate in Windows and Linux
+- to know network technologies at the level of CISCO CCNA
+- know tools for configuration management and server automation: CHEF, PUPPET, ANSIBLE
+- to be able to write scripts in Python
+additionally:
+- continuous integration and delivery [CI/CD] assembly and testing of the final product
+- about distributed version control
+- containerization and orchestration
+- infrastructure management as a code
+- virtualization
