@@ -34,6 +34,7 @@ FireWall - an active network device responsible for infrastructure security. It 
 - Statefull
 - Stateless
 Host-Based FireWall- software.
+9.
 DevOps - Development and Operations
 a model of interaction between those who write code and those who make this code work, roll it out into production, manage servers. Such a profession is called a DevOps engineer. Basic things that a DevOps engineer should know:
 - easy to navigate in Windows and Linux
@@ -46,3 +47,27 @@ additionally:
 - containerization and orchestration
 - infrastructure management as a code
 - virtualization
+10. HTTP/ HTTPS
+HTTP [Hypertext Transfer Protocol] transmits hypertext with hyperlinks, which represent a path to another file on the Internet, that is, its URL. He does this using the TCP session on port 80. The image page is written in the markup language HTML [Hypertext Markup Language] 
+HTTP it is a client-server protocol
+you can also get to the page knowing its URL [Uniform Resource Locator]
+HTTP consists of:
+- start page (contains URL and request method)
+There are methods GET, PUT, POST, HEAD, DELETE
+The start page of the response from the server is different from the request. It transmits a three-digit processing status code. There are 5 types in total:
+-1.. information about the data transfer process
+-2..info about successful transfer
+-3..redirection
+-4.. client error
+-5..the server is not working
+- Header: contains information about logins, language, authorization and so on
+- Message body:
+These are data that we send in a request or receive in a response from the server
+HTTP transmits all data in open form. That's why the extension appeared HTTPS [Secure] encrypts all data. Encryption is provided by SSL and TLS mechanisms
+SSl [Secure Sockets Layer] works when we connect to a site and ask the site to identify itself. In response, the site will send us a copy of its SSL certificate, adding that it is secure.
+TLS [Transport Layer Security] is a newer version SSL
+10.
+MAC [Media Access Control] it is the physical address of the device, has a unique combination of numbers and letters 48 bits long. Is the hardware number of the equipment, which is assigned to it at the factory. The first 6 digits of the МАС mean productivity, that is, OUI
+[Organizational Unique Identifier]
+the other 6 are unique and identify the NIC of the network card
+[Network Interface Controller]
