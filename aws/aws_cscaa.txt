@@ -62,5 +62,7 @@ and something about ‘'Listener’' and ‘'Target group’', i didn’t quite 
 and something about ‘'sticky’' didn’t understand also. How to do balance weight sticky?
 27.06
 created load balanser and ec2, combined machines creating target group. Set up security for accounts, created admin account to aws
-04.07.2022
-created html page
+
+
+05.07.2022
+EBS [Elastic Blokc storage]data is stored in blocks in storage. each block has its own capacity of 512 GB and its own unique address. Each block can be controlled separately. storage can be local or connected to the network. is formed using file systems fat32 NTFS ext3, ext4.
