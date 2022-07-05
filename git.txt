@@ -7,3 +7,15 @@ git pull - pulls latest changes from remote repository
 git add <file name> - add changed file for commit
 git commit -m "comment for commit" - commit changes
 git push - push new commits to server
+EBS
+lsblk - a command with which you can see how many volumes we have
+sudo file -s /dev/xvdb - see if the file system is mounted
+sudo mkts -t ext4 /dev/xvdb - create file system
+sudo mkdir /data - create a data folder
+sudo mount/dev/xvdb/data - mounting of EBS to data
+sudo vim mytext.txt - adding a file
+sudo cp /etc/fstab /etc/fstab.orig - creating a backup copy
+sudo vim /etc/fstab - adding the newly created mount point to the FS tab file
+/dev/xvdb /data ext4 defoults,nofile 0 2 - creating mount point
+qw - save changes
+sudo umound /data - unmount data
