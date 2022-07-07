@@ -19,3 +19,9 @@ sudo vim /etc/fstab - adding the newly created mount point to the FS tab file
 /dev/xvdb /data ext4 defoults,nofile 0 2 - creating mount point
 qw - save changes
 sudo umound /data - unmount data
+mkdir /name/ - create a new directory
+cp 'file.txt' 'newfile.txt' - to copy file
+cd ../ - to change current directory
+rm 'file' - to delete file
+mv -v file.txt newfile.txt - to rename file
+dir - to list files in current directory
