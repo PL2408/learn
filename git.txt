@@ -7,6 +7,13 @@ git pull - pulls latest changes from remote repository
 git add <file name> - add changed file for commit
 git commit -m "comment for commit" - commit changes
 git push - push new commits to server
+mkdir /name/ - create a new directory
+cp 'file.txt' 'newfile.txt' - to copy file
+cd ../ - to change current directory
+rm 'file' - to delete file
+mv -v file.txt newfile.txt - to rename file
+dir - to list files in current directory
+
 EBS
 lsblk - a command with which you can see how many volumes we have
 sudo file -s /dev/xvdb - see if the file system is mounted
@@ -19,9 +26,5 @@ sudo vim /etc/fstab - adding the newly created mount point to the FS tab file
 /dev/xvdb /data ext4 defoults,nofile 0 2 - creating mount point
 qw - save changes
 sudo umound /data - unmount data
-mkdir /name/ - create a new directory
-cp 'file.txt' 'newfile.txt' - to copy file
-cd ../ - to change current directory
-rm 'file' - to delete file
-mv -v file.txt newfile.txt - to rename file
-dir - to list files in current directory
+
+
