@@ -69,3 +69,8 @@ EBS [Elastic Blokc storage]data is stored in blocks in storage. each block has i
 
 Video 17
 EBS snapshot - backup. Each backup complements the previous one with new data, and does not completely replace it. This saves disk space. Data is not duplicated. EBS depends on availability zones. With an existing snapshot, you can create a new volume or instance and place it in any region. You can change the security group. Create snapshot policy lifecycle - in this section you can make changes to the snapshot. To transfer a snapshot to another availability zone, you need to convert it to a volume. Encryption - encryption of data. The keys are created automatically and it is very convenient. If we have created default encryption on a volume or snapshot, then the instance can be attached only by specifying the encryption support function.
+Video 18
+EFS - elastic file storage. AV C offers a fully managed EFS file system for use with cloud services and local resources. It can be expanded and reduced depending on needs. Storage classes:
+-standard
+- with infrequent access
+EFS can be managed using security groups and data can be placed in different Availability Zones
