@@ -27,4 +27,101 @@ sudo vim /etc/fstab - adding the newly created mount point to the FS tab file
 qw - save changes
 sudo umound /data - unmount data
 
+EC2 commands for running
 
+drwxr-x--- 4 janaz janaz 4096 Jul 13 15:04 ./
+drwxr-xr-x 3 root  root  4096 Jul  8 17:33 ../
+-rw------- 1 janaz janaz 1083 Jul 13 15:13 .bash_history
+-rw-r--r-- 1 janaz janaz  220 Jan  6  2022 .bash_logout
+-rw-r--r-- 1 janaz janaz 3771 Jan  6  2022 .bashrc
+-rwxr-xr-x 1 janaz janaz  827 Jul 10 13:11 calc.py*
+drwxr-xr-x 2 janaz janaz 4096 Jul  8 17:35 .landscape/
+-rw-r--r-- 1 janaz janaz    0 Jul 13 13:16 .motd_shown
+-rw-r--r-- 1 janaz janaz  807 Jan  6  2022 .profile
+-rw------- 1 janaz janaz   34 Jul  9 13:45 .python_history
+drwx------ 2 janaz janaz 4096 Jul 13 15:04 .ssh/
+-rw-r--r-- 1 janaz janaz    0 Jul  9 13:32 .sudo_as_admin_successful
+-rw------- 1 janaz janaz 4507 Jul 10 13:11 .viminfo
+janaz@DESKTOP-L96TOG7:~$ cp /mnt/c/keys/p_l.pem .ssh/
+janaz@DESKTOP-L96TOG7:~$ ll .ssh
+total 16
+drwx------ 2 janaz janaz 4096 Jul 13 20:34 ./
+drwxr-x--- 4 janaz janaz 4096 Jul 13 15:04 ../
+-rw-r--r-- 1 janaz janaz  284 Jul 13 20:34 known_hosts
+-rwxr-xr-x 1 janaz janaz 1674 Jul 13 20:34 p_l.pem*
+janaz@DESKTOP-L96TOG7:~$ chmod 400 .ssh/p_l.pem
+janaz@DESKTOP-L96TOG7:~$ ll .ssh
+total 16
+drwx------ 2 janaz janaz 4096 Jul 13 20:34 ./
+drwxr-x--- 4 janaz janaz 4096 Jul 13 15:04 ../
+-rw-r--r-- 1 janaz janaz  284 Jul 13 20:34 known_hosts
+-r-------- 1 janaz janaz 1674 Jul 13 20:34 p_l.pem
+janaz@DESKTOP-L96TOG7:~$ cp .ssh^C_l.pem .ssh/
+janaz@DESKTOP-L96TOG7:~$ ssh -i .ssh/p_l.pem ec2-user@3.70.169.59
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-10-0-92-156 ~]$ logout
+Connection to 3.70.169.59 closed.
+janaz@DESKTOP-L96TOG7:~$ pwd
+/home/janaz
+janaz@DESKTOP-L96TOG7:~$ ssh -i .ssh/p_l.pem ec2-user@3.70.169.59
+Last login: Wed Jul 13 17:39:24 2022 from 91.235.226.254
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-10-0-92-156 ~]$ logout
+Connection to 3.70.169.59 closed.
+janaz@DESKTOP-L96TOG7:~$ ssh ec2-user@3.70.169.59
+ec2-user@3.70.169.59: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+janaz@DESKTOP-L96TOG7:~$ ssh -i .ssh/p_l.pem ec2-user@3.70.169.59
+Last login: Wed Jul 13 17:45:27 2022 from ec2-3-120-181-42.eu-central-1.compute.amazonaws.com
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-10-0-92-156 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-10-0-92-156 ~]$ ll
+total 0
+[ec2-user@ip-10-0-92-156 ~]$ touch txt.file
+[ec2-user@ip-10-0-92-156 ~]$ ll
+total 0
+-rw-rw-r-- 1 ec2-user ec2-user 0 Jul 13 17:57 txt.file
+[ec2-user@ip-10-0-92-156 ~]$ echo "Hello World" > txt.file
+[ec2-user@ip-10-0-92-156 ~]$ ll
+total 4
+-rw-rw-r-- 1 ec2-user ec2-user 12 Jul 13 17:57 txt.file
+[ec2-user@ip-10-0-92-156 ~]$ cat txt.file
+Hello World
+[ec2-user@ip-10-0-92-156 ~]$ echo "Hello World" >> txt.file
+[ec2-user@ip-10-0-92-156 ~]$ echo "Hello World" >> txt.file
+[ec2-user@ip-10-0-92-156 ~]$ echo "Hello World" >> txt.file
+[ec2-user@ip-10-0-92-156 ~]$ echo "Hello World" >> txt.file
+[ec2-user@ip-10-0-92-156 ~]$ cat txt.file
+Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+[ec2-user@ip-10-0-92-156 ~]$ vim service.cfg
+[ec2-user@ip-10-0-92-156 ~]$ ll
+total 8
+-rw-rw-r-- 1 ec2-user ec2-user 625 Jul 13 17:58 service.cfg
+-rw-rw-r-- 1 ec2-user ec2-user  60 Jul 13 17:58 txt.file
+[ec2-user@ip-10-0-92-156 ~]$ logout
+Connection to 3.70.169.59 closed.
+janaz@DESKTOP-L96TOG7:~$
+janaz@DESKTOP-L96TOG7:~$
+
+GIT
+
+alias ga='git add'
