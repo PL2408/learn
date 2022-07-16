@@ -74,3 +74,48 @@ EFS - elastic file storage. AV C offers a fully managed EFS file system for use 
 -standard
 - with infrequent access
 EFS can be managed using security groups and data can be placed in different Availability Zones
+
+
+
+EC2 from the scratch
+===========================
+1. Create VPC
+	VPC only
+	Name: lp-vpc
+	IPv4 CIDR manual input
+	CIDR 10.0.0.0/16
+	No IPv6 CIDR block
+	Tenancy: Default
+	Tags: nothing
+2. Internet gateway
+	Name - lp-igw
+	attach to VPC
+3. Route table:
+	add route: 0.0.0.0 igw-<name>
+	choose internet gateway
+4.Subnets
+add VPC
+name .....
+avilability zone 'eu-central-1a'
+IPv4 CIDR block 10.0.0.0/24
+EC2
+Launch an instance
+Name
+Application and OS Images 
+Instance type t2micro or another type
+Key pair (login) p_l.pem
+create security group
+name
+Auto-assign public IP  Info enable
+Allow SSH traffic from my ip
+launche instance
+join to security group
+check inboundse rules
+
+EC2 connections
+terminal
+cd .ssh/
+pwd
+copy instance and public ip, like ssh -i "p_l.pem" ec2-user@3.121.207.225
+yes
+done
