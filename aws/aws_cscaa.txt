@@ -124,3 +124,92 @@ pwd
 copy instance and public ip, like ssh -i "p_l.pem" ec2-user@3.121.207.225
 yes
 done
+
+
+
+
+
+
+
+RDS
+
+1.Create database
+Standard create
+You set all of the configuration options, including ones for availability, security, backups, and maintenance.
+Engine options: PostgreSQL
+Version: Postgre SQL 13.4-R1
+Templates
+Choose a sample template to meet your use case: Free tier
+Availability and durability: don't use fo free tier
+
+2.Settings
+DB instance identifier: petrol
+Master password automatically
+Confirm password
+
+3.Instance configuration
+DB instance class: Burstable classes (includes t classes)
+inctance type: db.t3.micro for free tier
+
+4.Storage
+General Purpose SSD (gp2)
+Allocated storage: 20 Gb
+Storage autoscaling: disable
+
+5.Connectivity
+Virtual private cloud (VPC): create VPC, must have enable DNS hostnames and resolution.
+Subnet group: you need to create two subnets in different availability zones. Specify subnet ranges correctly
+Public access: yes
+VPC security group: Create new
+New VPC security group name: select the created one
+Availability Zone: select
+
+6.Database authentication
+Password authentication
+Authenticates using database passwords.
+
+7.Additional configuration
+Initial database name: create
+DB parameter group: defoult.postgres13
+Backup: enable
+Backup retention period: 7 days
+Backup window: No preference
+Copy tags to snapshots
+Backup replication: disable
+
+8.Encryption
+Enable encryption
+AWS KMS key: (defoult) aws/rds
+Account
+367613332035
+KMS key ID
+cac184ca-938d-4f63-bb21-96b46e84f30a
+
+9.Performance Insights
+Turn on Performance Insights
+7 days for free tier
+AWS KMS key: (defoult) aws/rds
+Account
+367613332035
+KMS key ID
+cac184ca-938d-4f63-bb21-96b46e84f30a
+
+10. Monitoring
+disable
+Log exports: don't select
+
+
+11.Maintenance
+Enable auto minor version upgrade
+Maintenance window: No preference
+Deletion protection: don't select
+
+12.Estimated monthly costs
+The Amazon RDS Free Tier is available to you for 12 months. Each calendar month, the free tier will allow you to use the Amazon RDS resources listed below for free:
+750 hrs of Amazon RDS in a Single-AZ db.t2.micro, db.t3.micro or db.t4g.micro Instance.
+20 GB of General Purpose Storage (SSD).
+20 GB for automated backup storage and any user-initiated DB Snapshots.
+
+Create Database
+
+
