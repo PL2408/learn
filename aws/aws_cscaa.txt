@@ -213,3 +213,15 @@ The Amazon RDS Free Tier is available to you for 12 months. Each calendar month,
 Create Database
 
 
+VPC: 10.0.0.0/16
+----------------
+SN1: 10.0.1.0/24
+SN2: 10.0.2.0/24
+SN3: 10.0.3.0/24
+SN4: 10.0.4.0/24
+----------------
+SN5: 10.0.255.255/24
+SN6: 10.127.255.255/24
+
+Definitions:
+
