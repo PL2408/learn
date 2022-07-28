@@ -8,3 +8,5 @@ i - mode for Insert (type text)
 :wq - write and quit
 
 :q! - done't write (save), just quit wihtout savings
+
+# comments in bash scripts
