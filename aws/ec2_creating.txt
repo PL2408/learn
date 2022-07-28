@@ -1,0 +1,64 @@
+EC2 from the scratch
+===========================
+1. Create VPC
+	VPC only
+	Name: lp-vpc
+	IPv4 CIDR manual input
+	CIDR 10.0.0.0/16
+	No IPv6 CIDR block
+	Tenancy: Default
+	Tags: nothing
+
+2. Internet gateway
+	Name - lp-igw
+	attach to VPC
+
+3. Route table:
+	Name: public-rt
+	add route: 0.0.0.0 igw-<name>
+	choose internet gateway
+
+4.Subnets
+	add VPC
+	name: ec2-public-sn
+	avilability zone 'eu-central-1a'
+	IPv4 CIDR block 10.0.0.0/24
+	EC2
+
+5.Create security group
+	name: lp-ec2-sg
+	Auto-assign public IP  Info enable
+	Allow SSH traffic from my ip port22
+	launche instance
+	join to security group 
+	check inboundse rules (the security group must be public 0.0.0.0/0)
+
+6.Launch an instance
+	Name: ec2-lp
+	Application and OS Images (Amazon Linux 2 Kernel 5.10 AMI 2.0.20220606.1 x86_64 HVM gp2)
+	Instance type: t2.micro
+	Key pair (login) p_l.pem
+	Network (add VPC)
+	Subnet (add Subnet)
+	Auto-assign public IP (enable)
+	Select existing security group (select your security group)
+	Configure storage (1x8GiB gp2 Root volume)
+	Advanced details (DNS Hostname  Info
+    Enable IP name IPv4 (A record) DNS requests
+    Enable resource-based IPv4 (A record) DNS requests
+    Enable resource-based IPv6 (AAAA record) DNS requests)
+
+7.EC2 connections
+	terminal
+	cd .ssh/
+	pwd
+	copy instance and public ip, like ssh -i "p_l.pem" ec2-user@3.121.207.225
+	yes
+	done
+
+
+
+
+
+
+
