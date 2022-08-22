@@ -28,7 +28,7 @@ qw - save changes
 sudo umound /data - unmount data
 
 
-
+git (ubunta) cd /mnt/c/git
 
 EC2 commands for running
 
