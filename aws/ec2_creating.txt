@@ -28,7 +28,7 @@ EC2 from the scratch
 5.Create security group
 	name: lp-ec2-sg
 	Auto-assign public IP  Info enable
-	Allow SSH traffic from my ip port22
+	Allow SSH traffic from my ip port22 - INBOUND RULE
 	launche instance
 	join to security group 
 	check inboundse rules (the security group must be public 0.0.0.0/0)
@@ -56,7 +56,7 @@ EC2 from the scratch
 	yes
 	done
 
-
+ ssh -i ~/.ssh/p_l.pem ec2-user@10.0.1.99 - абсолютний шлях до файла ключа, що дозволяє підєднуватися з будь-якої папки
 
 
 
