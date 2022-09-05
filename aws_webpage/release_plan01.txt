@@ -1,0 +1,58 @@
+Content
+	0*.  Create S3 bucket
+	0*.  Copy web page to created S3 bucket
+	0*.  Copy files from S3 bucket to created folder
+	1.  Deploy AWS EC2 instance
+	2.  Create folder for web page
+	3.  Copy web page to EC2
+	4.  Install NGINX
+	5.  Edit NGINX config to pick up web page
+	6.  Install hosted zone in AWS Route53
+	7.  Add DNS record to Route53
+	8.  Create SSL Certificate
+	9.	Create Target Group (use HTTP1)
+	10. Create Application Load Balancer
+	11. Add listener to ALB to forward 80->443
+
+	lopihara.iplatinum.pro
+
+
+1.
+see: ec2_creating.txt
+
+User Data:
+mkdir /home/webpage
+amazon-linux-extras enable epel -y
+yum install epel-release -y
+yum install -y nginx
+
+2.
+mkdir /home/ec2-user/webpage
+chown ec2-user:ec2-user /home/ec2-user/webpage
+
+3.
+scp -i ~/.ssh/p_l.pem index.html ec2-user@3.127.136.40:/home/ec2-user/webpage/
+scp -r -i ~/.ssh/p_l.pem css ec2-user@3.127.136.40:/home/ec2-user/webpage/
+scp -r -i ~/.ssh/p_l.pem images/ ec2-user@3.127.136.40:/home/ec2-user/webpage/
+
+chmod -R +rx /home/ec2-user/
+
+4.
+amazon-linux-extras enable epel -y
+yum install epel-release -y
+yum install -y nginx
+
+service nginx start
+
+5.
+Update nginx config /etc/nginx/nginx.conf
+Comment line with #:
+root   /usr/share/nginx/html;
+Add next line with
+root	/home/ec2-user/webpage;
+
+service nginx restart
+
+open http://<ec2_ip>/ and ensure it's running
+
+6.
