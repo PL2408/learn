@@ -101,3 +101,6 @@ drwxr-x--- 4 janaz janaz 4096 Jul 18 18:51 ../
 -rw------- 1 janaz janaz 1598 Jul 21 15:24 known_hosts
 -rw------- 1 janaz janaz 1376 Jul 21 15:24 known_hosts.old
 -r-------- 1 janaz janaz 1674 Jul 13 20:34 p_l.pem
+
+1
+2
