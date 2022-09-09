@@ -1,0 +1,3 @@
+scp -i ~/.ssh/p_l.pem file.txt ec2-user@3.127.136.40:/home/ec2-user/ приєднання за допомогою ключа
+
+scp file.txt lopihara@192.168.0.109:/home/lopihara/  приєднання за допомогою користувача та ip адреси
