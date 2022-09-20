@@ -1,0 +1,199 @@
+0. Choose AWS Region:
+eu-central-1
+Europe Frankfurt
+
+1. Create VPC
+Name: visitka_vpc
+IPv4 CIDR: 10.0.0.0/16
+
+2. Create Internet Gateway
+Name: visitka_igw
+Action: Attach to VPC
+
+
+3. Create Route Table
+Name: visitka_rt
+Edit routes: 
+	0.0.0.0/0 -> visitka_igw   
+
+4. Create 2 Subnets:
+1.
+Name: public_subnet01
+Availability Zone: eu-central-1a
+IPv4 CIDR block: 10.0.0.0/24
+2.
+Name: public_subnet02
+Availability Zone: eu-central-1b
+IPv4 CIDR block: 10.0.1.0/24
+
+5. Associate Subnets with Route Table
+Select Subnet
+Tab Route table -> Edit route table association: select visitka_rt
+
+6. Create EC2 Security Group
+Name: web_ec2_sg
+Description: web_ec2_sg
+Add Inbound rule: 
+	Type: SSH
+	Source: My IP
+	Description: SSH traffic
+
+7. Create EC2 instance
+Name: web_ec2
+OS Image: Amazon Linux
+AMI: Amazon Linux 2
+Instance type: t2.micro
+Key pair: p_l.pem
+VPC: visitka_vpc
+Subnet: public_subnet01
+Auto-assign public IP: Enable
+Select security group: web_ec2_sg 
+Configure storage: 8GB gp3
+
+User Data:
+#!/bin/bash -xe
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+yum update -y
+amazon-linux-extras enable epel -y
+yum install epel-release -y
+yum install -y nginx
+service nginx start
+
+echo 'export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]"' >> /etc/bashrc
+
+8. Create SSL certificate (ACM)
+Request a public certificate
+Domain name: lopihara.iplatinum.pro
+Select validation method: DNS validation
+
+Validation:
+Open sertificate -> Create records in Route 53
+*if sertificate is green, record may not be created
+
+9. Create Target group
+Choose a target type: 
+Instances
+Target group name: web-ec2-tg
+Protocol: HTTP 
+Port:80
+VPC: visitka_vpc
+Protocol version: HTTP1
+Select available instance web_ec2
+Click: Include as pending below
+
+10. Create ELB Security group
+Name: web_elb_sg
+Description: web_elb_sg
+Add Inbound rule: 
+	Type: HTTPS
+	Source: Anywhere (0.0.0.0/0)
+	Description: HTTPS traffic
+
+11. Create ELB 
+Load balancer types: Application Load Balancer
+Name: visitka-elb
+Scheme: Internet-facing
+IP address type: IPv4
+VPC: visitka_vpc
+Mappings:
+	eu-central-1a: pbulic__subnet01
+	eu-central-1b: pbulic__subnet02
+Security Group: web_elb_sg
+Listener:
+	Protocol: HTTPS
+	Port: 443
+	Default action: Forward to: web-ec2-tg
+Default SSL/TLS certificate: lopihara.iplatinum.pro 
+
+12. Update EC2 Security group - web_ec2_sg
+Add Inbound rule: 
+	Type: HTTP
+	Source: web_elb_sg
+	Description: HTTP traffic from ELB
+
+13. Check
+Opend ELB DNS, site should be opened with SSL error
+https://visitka-elb-987974143.eu-central-1.elb.amazonaws.com/
+
+14. Create Route 53 record
+subdomain: empty
+Record type: A
+Alias: ON
+Route traffic to: Alias to Application and Classic Load Balancer
+Choose region: eu-central-1
+Choose Load balancer: visitka-elb
+
+15. Check 
+https://lopihara.iplatinum.pro/
+
+16. Copy files to EC2 instance
+
+(this command should be performed from local workstation - wsl)
+scp -i /home/jana/.ssh/p_l.pem -r /mnt/c/git/learn/learn_html/visit_card ec2-user@3.67.176.113:/home/ec2-user/
+
+17. SSH to EC2 instance
+ssh -i ~/.ssh/p_l.pem ec2-user@3.67.176.113
+
+Move files from /home/ec2-users/ to /home/
+command: sudo su 
+mv /home/ec2-user/visit_card /home/
+
+Update permissions to files:
+chmod 644 /home/visit_card -R
+chmod 755 /home/visit_card
+chmod 755 /home/visit_card/css
+chmod 755 /home/visit_card/images
+
+18. Edit nginx config
+sudo su
+cp -p /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bk
+vim /etc/nginx/nginx.conf
+	Change line from:
+	root         /usr/share/nginx/html;
+	to
+	root         /home/visit_card;
+*Please carafully check if new folder exist
+**press yy to copy line and p to past copied line in VIM command mode 
+
+Restart nginx: service nginx restart
+
+
+Notes:
+===================================
+* If you see errors like 504 Bad Gateway - check Security Groups rules (item 12)
+
+
+Destroyment:
+===================================
+1. Terminate instance.
+2. Delete Load Balancer.
+3. Delete VPC with all components (automatically)
+4. Delete Target group.
+5. Delete ACM certificate.
+6. Delete Route53 records:
+	lopihara.iplatinum.pro	A
+	_68899aaf0c5eab681a4d9b365185f627.lopihara.iplatinum.pro	CNAME
+
+
+
+
+
+
+Steps for improvements:
+1. Download page from GIT in user data script.
+
+Owner 	Group	All
+rwx 	rwx 	rwx
+
+d rwx --- ---
+
+d rwx 	r-x 	r-x
+
+rwx = 111 = 7
+
+101 = 5
+110 = 6
+100 = 4
+
+755
+644
