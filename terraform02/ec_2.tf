@@ -4,7 +4,7 @@ resource "aws_instance" "visitka_ec2_server" {
   key_name                    = "p_l"
   subnet_id                   = aws_subnet.public_subnet01.id
   vpc_security_group_ids      = [aws_security_group.visitka_ec2_sg.id]
-  user_data                   = file("config/user_data.sh")
+  user_data                   = file("config/user_data_jn.sh")
   associate_public_ip_address = true
   user_data_replace_on_change = true
 
