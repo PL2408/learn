@@ -30,3 +30,4 @@ resource "aws_security_group" "visitka_ec2_sg" {
     Name = "visitka_ec2_sg"
   }
 }
+
