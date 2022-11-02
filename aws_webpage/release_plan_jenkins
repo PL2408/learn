@@ -1,0 +1,115 @@
+Plan 1
+-----------------------------------------------------------------------------------
+1. Create EC2 instance with installed Jenkins agent (Node)
+
+
+
+1.1 Create EC2 Security Group
+
+Name: jenkins_ec2_sg
+Description: jenkins_ec2_sg
+Add Inbound rule: 
+	Type: SSH
+	Source: My IP
+	Description: SSH traffic
+
+	Type: SSH
+	Source: visitka_ec2_sg
+	Description: SSH traffic Node
+
+1.2 Choose:
+
+VPC
+Name: visitka_vpc
+IPv4 CIDR: 10.0.0.0/16
+
+Name: public_subnet01
+Availability Zone: eu-central-1a
+IPv4 CIDR block: 10.0.0.0/24
+
+1.3 UserData:
+
+#!/bin/bash -xe
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+
+yum update -y
+
+yum install java -y
+
+
+
+2. Connect to (jenkins) machine
+
+ssh -i .ssh/p_l.pem ec2-user@(IP)
+
+2.1 Check java installation
+
+java --version
+
+Example:
+
+(openjdk 17.0.5 2022-10-18 LTS
+OpenJDK Runtime Environment Corretto-17.0.5.8.1 (build 17.0.5+8-LTS)
+OpenJDK 64-Bit Server VM Corretto-17.0.5.8.1 (build 17.0.5+8-LTS, mixed mode, sharing)
+ec2-user@ip-10-0-0-198:[~]: Connection to 18.185.238.233 closed by remote host.
+Connection to 18.185.238.233 closed.)
+
+
+
+3. Connect Jenkins Agent to Jenkins Server
+
+3.1 Generating public/private rsa key
+
+ssh-keygen -f ~/.ssh/jenkins_agent_key
+
+3.2 Path to keys and open file
+
+~/.ssh/jenkins_agent_key
+
+cat ~/.ssh/jenkins_agent_key
+
+cd ~/.ssh/
+
+cat jenkins_agent_key.pub
+
+ssh -i
+
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+3. Run "Hello world" job on the Jenkins Agent
+
+Reference:
+https://www.bogotobogo.com/DevOps/Jenkins/Jenkins_on_EC2_setting_up_master_slaves.php
+
+ssh-keygen -f ~/.ssh/jenkins_agent_key
+
+1. Jenkins connects to agent using 22 SSH
+2. Agent's security group should allow connection to 22 port from master node 
+3. Java should be installed on the agent 
+4. Custom PS1 breaks agent node 
+
+
+
+
+
+
+Plan 2
+1. Create EC2 instance with Nginx (see last Release plan) - web-server 2
+2. Create job "Install Web Page" which do next:
+	a. Clone repository
+	b. Copy Website files to web-server 2
+3. Open page on web-server 2 using http protocol
+
+Plan 3
+1. Setup Web-hook on GitHub for Jenkins server
+2. Run job "Install Web Page" on any new commit to master branch on GitHub.
