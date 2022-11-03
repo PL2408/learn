@@ -13,6 +13,13 @@ yum install jenkins -y
 
 service jenkins start
 
+# Create SWAP file 5GB
+dd if=/dev/zero of=/swapfile bs=128M count=40
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+
 # redirect port 80 to 8080
 iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 
