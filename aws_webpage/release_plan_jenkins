@@ -40,6 +40,8 @@ yum install java -y
 
 2. Connect to (jenkins) machine
 
+
+
 ssh -i .ssh/p_l.pem ec2-user@(IP)
 
 2.1 Check java installation
@@ -58,21 +60,28 @@ Connection to 18.185.238.233 closed.)
 
 3. Connect Jenkins Agent to Jenkins Server
 
-3.1 Generating public/private rsa key
+
+
+a) Generate public/private rsa key 
 
 ssh-keygen -f ~/.ssh/jenkins_agent_key
 
-3.2 Path to keys and open file
+# next commands examples can be executed only from the folder .ssh/ (or you need to add the path to the file folder)
 
-~/.ssh/jenkins_agent_key
+b) open private key and paste to credentials configure in jenkins
 
-cat ~/.ssh/jenkins_agent_key
+cat jenkins_agent_key
 
-cd ~/.ssh/
+c) Open public key and copy
 
 cat jenkins_agent_key.pub
 
-ssh -i
+d) Open authorized_keys folder with vim
+
+vim authorized_keys
+
+e) Paste public key to folder
+
 
 -----------------------------------------------------------------------------------
 
@@ -113,3 +122,11 @@ Plan 2
 Plan 3
 1. Setup Web-hook on GitHub for Jenkins server
 2. Run job "Install Web Page" on any new commit to master branch on GitHub.
+
+
+-----------------------------------------------------------------------------
+SSH authentication
+--
+1. Generate SSH pair keys
+2. Add Public key to authorized_keys file on external machine for specific user
+3. Login to that machine using user name and private key
