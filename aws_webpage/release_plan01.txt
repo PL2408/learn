@@ -15,7 +15,11 @@ Content
 	11. Add listener to ALB to forward 80->443
 
 	lopihara.iplatinum.pro
-
+1. Create EC2 instance with Nginx (see last Release plan) - web-server 2
+2. Create job "Install Web Page" which do next:
+	a. Clone repository
+	b. Copy Website files to web-server 2
+3. Open page on web-server 2 using http protocol
 
 1.
 see: ec2_creating.txt

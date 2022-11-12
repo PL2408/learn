@@ -50,11 +50,7 @@ java --version
 
 Example:
 
-(openjdk 17.0.5 2022-10-18 LTS
-OpenJDK Runtime Environment Corretto-17.0.5.8.1 (build 17.0.5+8-LTS)
-OpenJDK 64-Bit Server VM Corretto-17.0.5.8.1 (build 17.0.5+8-LTS, mixed mode, sharing)
-ec2-user@ip-10-0-0-198:[~]: Connection to 18.185.238.233 closed by remote host.
-Connection to 18.185.238.233 closed.)
+
 
 
 
