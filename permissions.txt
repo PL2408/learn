@@ -36,7 +36,11 @@ rwx r-x r-x
 -----------
 110 100 100
 rw- r-- r--
+11b04e0fda0c0ac39e57570f561595ae7c jenkins token
 
+auth jenkins command with token
+java -jar jenkins-cli.jar -auth petrol:11b04e0fda0c0ac39e57570f561595ae7c -s
+http://lopihara.iplatinum.pro who-am-i
 
 
 
