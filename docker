@@ -1,0 +1,72 @@
+
+docker
+docker version
+docker pull <image>
+docker ps -a
+docker run <image> -d -p 80:80 name
+docker rm name 
+
+docker run -d --rm --name teamcity-server-instance  \
+    -v /home/jana/tc/data:/data/teamcity_server/datadir \
+    -v /home/jana/tc/logs:/opt/teamcity/logs  \
+    -p 8111:8111 \
+    jetbrains/teamcity-server
+
+
+docker run -v teamcity-server-instance:/data/teamcity_server/datadir -p 8111:8111 jetbrains/teamcity-server
+
+container
+-------------------------------------
+/									|
+/data 								|
+/data/teamcity_server/datadir		| -> /home/jana/tc/data
+/home 								|
+/opt 								|
+/opt/teamcity/logs 					| -> /home/jana/tc/logs
+/etc 								|
+/var								|
+/mnt								|
+-------------------------------------
+Network			8111				|
+-------------------------------------
+				 |
+				8111
+
+docker run -v jiraVolume:/opt/tc/data --name="jira" -d -p 80:8080 atlassian/jira-software
+
+docker run -p 812:812 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk11
+
+25fc1768e44e55d9e4083acf74b7d9f87798cb37
+
+
+
+#!/bin/bash -xe
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+
+yum update -y
+
+
+# Install Jenkins
+
+wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+
+
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+yum upgrade -y
+
+yum install java-11-openjdk -y
+
+yum install jenkins -y
+
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+systemctl daemon-reload
+
+# Custom PS1
+echo 'export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]"' >> /etc/bashrc
+
+
+amazon-linux-extras install java-openjdk11
