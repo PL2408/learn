@@ -1,7 +1,7 @@
 resource "aws_instance" "jenkins_server" {
   ami                         = "ami-05ff5eaef6149df49"
   instance_type               = "t3.micro"
-  key_name                    = "p_l"
+  key_name                    = "p_l1"
   subnet_id                   = aws_subnet.public_subnet01.id
   vpc_security_group_ids      = [aws_security_group.jenkins_ec2_sg.id]
   user_data                   = file("config/user_data_jenkins.sh")
@@ -27,7 +27,7 @@ output "jenkins_public_ip" {
 resource "aws_instance" "jenkins_agent" {
   ami                         = "ami-05ff5eaef6149df49"
   instance_type               = "t3.micro"
-  key_name                    = "p_l"
+  key_name                    = "p_l1"
   subnet_id                   = aws_subnet.public_subnet01.id
   vpc_security_group_ids      = [aws_security_group.agent_ec2_sg.id]
   user_data                   = file("config/user_data_agent.sh")
@@ -53,7 +53,7 @@ output "agent_public_ip_new" {
 resource "aws_instance" "web_server" {
   ami                         = "ami-05ff5eaef6149df49"
   instance_type               = "t3.micro"
-  key_name                    = "p_l"
+  key_name                    = "p_l1"
   subnet_id                   = aws_subnet.public_subnet01.id
   vpc_security_group_ids      = [aws_security_group.web_ec2_sg.id]
   user_data                   = file("config/user_data_web.sh")

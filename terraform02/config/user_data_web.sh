@@ -12,10 +12,12 @@ yum install docker git htop -y
 #        Create user web          #
 ###################################
 sudo useradd -m -d /home/web -s /bin/bash web
+chmod 755 /home/web
+
 mkdir -p /home/web/.ssh/
 
 # Add Web public key
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRU0atCE8l0qbuEPCL2/42EXAgPUa5Z+wwXc9Ny4ueyn77Y+/LgNCiWUPNHOWRPuy1N6TC/5Ku3G8BAeJVCmQ9vRa74YQ29MdpiP7YmXYm1uc2zpjlxOaRDzSIVhOdEqf38wnpasN0y45OjWLxjIjGfxfZrCgoxyboRf5TIPM98zVjUBjFqs9VBX3i9QE+HXdmB/H/2BVjFSHderBAXxQvGXsXiDwTq3YLi2vU/p0c+UA4aKFGjJLNVrRfH+5NBtPBYHn2YOmgiI4fTZlxblX2vXTyw/fWnmx2aS2T2467t4i+aQ8QkiEigjxOHehc0TNQA4jayozIB2TJbaRK5ziDkkXMcCwyTeuSHZtkqYT6OtXUmdgNJqWo1vd16sh87m8CzVn/Z8Zbh3afNZYZpDEzS0WX3G2N0V6Zm6UASkO0T4hbDIsSvd+7LQNyxjSCr1AQ26oa19jDS1upVSGUDIZnL4+cMmT4n1dKt78NN/axPNH5Nxh05LQHCjR9nY3/4bU= jana@DESKTOP-L96TOG7" >> /home/web/.ssh/authorized_keys
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwEVorp6jaQewoamTQ5Tb/blY0EnISSEQlulgCAeUaT5DMlQrfn3NtPwsK0TBKsp2Hsp7ZdFs5DvapKRW0xDMYwOdVmDflndZiaw3y92qkEW1d9JxaIjYYkYkInaoJ6sYEjZBdyBv8DWy+6xm3RWdreyM9ZO8Ab0AbtQoLpOqbMkZRoItYA+gZeQs3rc4R+KJNOPR28Z0NBvfl+yLnCWlDQF7woUPqwUStoHkZpGqLYhuX2TugauwJNgU1lRXBlPt1KbvLbWYeK5vwMOYj85BA7To8mQIMR4Btf84Ki/H+bcq0TNAABD7MB+Kni5jH2cn8XYxdU+Y44/5M4Hf+z5oH lopihara@DESKTOP-2PR8U4H" >> /home/web/.ssh/authorized_keys
 
 # Set ownership for .ssh folder
 chown -R web:web /home/web/.ssh
@@ -25,7 +27,8 @@ chmod 700 /home/web/.ssh
 chmod 600 /home/web/.ssh/authorized_keys
 
 mkdir /home/web/html
-chown web:web /home/web/html
+chown -R web:web /home/web/html
+chmod 755 /home/web/html
 
 #########################################
 #       Start Services                  #
