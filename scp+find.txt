@@ -36,3 +36,13 @@ s: розетка
 2. Зробив роботу - commit
 3. Ввечері - git push
 ----------------------------------------
+
+jana@DESKTOP-L96TOG7:~$ aws s3 cp .ssh/p_l.pem s3://lopihara/ssh_keys/
+upload: .ssh/p_l.pem to s3://lopihara/ssh_keys/p_l.pem
+jana@DESKTOP-L96TOG7:~$ aws s3 cp .ssh/p_l.pem s3://lopihara/ssh_keys/
+
+Tasks
+1. Install AWS CLI on laptop
+2. Copy l_p.pem key from S3 to laptop
+
+{"ID":"38ddfd1a-2ba3-99cc-48b2-ada4a1e5026e","Operation":"OperationTypeApply","Info":"","Who":"DESKTOP-L96TOG7\\ptlaz@DESKTOP-L96TOG7","Version":"1.2.5","Created":"2022-12-05T12:32:42.9080592Z","Path":"lopihara/terraform/progect1_state"}
