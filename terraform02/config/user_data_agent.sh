@@ -18,14 +18,13 @@ mkdir /home/agent/.ssh
 chmod 700 /home/agent/.ssh
 
 
-#aws s3 cp s3://lopihara/ssh_keys/web.pk /home/agent/.ssh/web.pk
+aws s3 cp s3://lopihara/ssh_keys/web.pk /home/agent/.ssh/web.pk
 
 # Add Agent public key
-# Download Agent Publick key from S3 bucket
+# Download Agent Public key from S3 bucket
 aws s3 cp s3://lopihara/ssh_keys/agent.pb /home/agent/.ssh/agent.pb
-#cat agent.pb >> /home/agent/.ssh/authorized_keys
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDy3Kr6pqNvTDFMC52DzE/60Q7gbptP7h8TiiSDlnJRaIFtHtXx8EQuOhb62jg2eJsXsOQyeqpWErvSTsAt3/6UnOsazadxrsFerhD7lE8h0cOMhQMcG6pxfdK+2b2C5ejF8sC1ZHBGs/yPWZ2nue9hKaTgA4S3/NjbT5jin6wox6r2c+tTonPDdRJuSxRYe53IjrkjvvZ8hEKgoE1h+ooHaElOV9G8ti/w3jof1tm3ALEj6W22KQK4rZz2XJoov9xarJulZeXjJt0FlMcTmNHaLlItbMcwvgVpvwaVbD+hJWb1twSt7rWK2Z6lq74Y1tRDAFxTybyrRRtwas9E7dN/ lopihara@DESKTOP-2PR8U4H" >> /home/agent/.ssh/authorized_keys
-
+cat /home/agent/.ssh/agent.pb >> /home/agent/.ssh/authorized_keys
+chmod 400 /home/agent/.ssh/web.pk
 chmod 600 /home/agent/.ssh/authorized_keys
 
 chown -R agent:agent /home/agent/.ssh
