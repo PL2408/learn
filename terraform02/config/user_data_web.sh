@@ -49,6 +49,7 @@ echo 'export PS1="\[\e[0;38;5;42m\]\u\[\e[0m\]@\[\e[0;38;5;39m\]web-server\[\e[0
 # custom MOTD
 #mv /var/lib/update-motd/motd /var/lib/update-motd/motd.bk
 
+
 #cat << EOF >>/var/lib/update-motd/motd
 #
 # __      ______________________            ________________________________   _______________________
