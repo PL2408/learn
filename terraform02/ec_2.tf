@@ -8,6 +8,7 @@ resource "aws_instance" "jenkins_server" {
   associate_public_ip_address = true
   user_data_replace_on_change = true
   private_ip                  = "10.0.0.123"
+  iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   root_block_device {
     volume_type           = "gp3"
@@ -34,6 +35,7 @@ resource "aws_instance" "jenkins_agent" {
   associate_public_ip_address = true
   user_data_replace_on_change = true
   private_ip                  = "10.0.0.124"
+  iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   root_block_device {
     volume_type           = "gp3"
@@ -60,6 +62,7 @@ resource "aws_instance" "web_server" {
   associate_public_ip_address = true
   user_data_replace_on_change = true
   private_ip                  = "10.0.0.125"
+  iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
 
   root_block_device {
     volume_type           = "gp3"
