@@ -17,8 +17,9 @@ chmod 755 /home/web
 mkdir -p /home/web/.ssh/
 
 # Add Web public key
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwEVorp6jaQewoamTQ5Tb/blY0EnISSEQlulgCAeUaT5DMlQrfn3NtPwsK0TBKsp2Hsp7ZdFs5DvapKRW0xDMYwOdVmDflndZiaw3y92qkEW1d9JxaIjYYkYkInaoJ6sYEjZBdyBv8DWy+6xm3RWdreyM9ZO8Ab0AbtQoLpOqbMkZRoItYA+gZeQs3rc4R+KJNOPR28Z0NBvfl+yLnCWlDQF7woUPqwUStoHkZpGqLYhuX2TugauwJNgU1lRXBlPt1KbvLbWYeK5vwMOYj85BA7To8mQIMR4Btf84Ki/H+bcq0TNAABD7MB+Kni5jH2cn8XYxdU+Y44/5M4Hf+z5oH lopihara@DESKTOP-2PR8U4H" >> /home/web/.ssh/authorized_keys
-
+aws s3 cp s3://lopihara/ssh_keys/web.pb /home/web/.ssh/web.pb
+cat /home/web/.ssh/web.pb >> /home/web/.ssh/authorized_keys
+rm /home/web/.ssh/web.pb
 # Set ownership for .ssh folder
 chown -R web:web /home/web/.ssh
 
