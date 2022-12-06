@@ -18,8 +18,8 @@ mkdir -p /home/web/.ssh/
 
 # Add Web public key
 aws s3 cp s3://lopihara/ssh_keys/web.pb /home/web/.ssh/web.pb
-cat /home/web/.ssh/web.pb >> /home/web/.ssh/authorized_keys
-rm /home/web/.ssh/web.pb
+mv /home/web/.ssh/web.pb /home/web/.ssh/authorized_keys
+
 # Set ownership for .ssh folder
 chown -R web:web /home/web/.ssh
 
@@ -46,3 +46,16 @@ docker run -p 80:80 -v /home/web/html:/usr/share/nginx/html:ro -d nginx
 # custom PS1
 echo 'export PS1="\[\e[0;38;5;42m\]\u\[\e[0m\]@\[\e[0;38;5;39m\]web-server\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0;38;5;240m\]<\[\e[0;38;5;242m\]\t\[\e[0;38;5;241m\]>\[\e[0m\]:\[\e[0m\] "' >> /etc/bashrc
 
+# custom MOTD
+#mv /var/lib/update-motd/motd /var/lib/update-motd/motd.bk
+
+#cat << EOF >>/var/lib/update-motd/motd
+#
+# __      ______________________            ________________________________   _______________________
+#/  \    /  \_   _____|______   \          /   _____|_   _____|______   \   \ /   |_   _____|______   \
+#\   \/\/   /|    __)_ |    |  _/  ______  \_____  \ |    __)_ |       _/\   Y   / |    __)_ |       _/
+# \        / |        \|    |   \ /_____/  /        \|        \|    |   \ \     /  |        \|    |   \
+#  \__/\  / /_______  /|______  /         /_______  /_______  /|____|_  /  \___/  /_______  /|____|_  /
+#       \/          \/        \/                  \/        \/        \/                  \/        \/
+#
+#EOF

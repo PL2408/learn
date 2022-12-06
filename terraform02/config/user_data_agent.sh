@@ -23,8 +23,7 @@ aws s3 cp s3://lopihara/ssh_keys/web.pk /home/agent/.ssh/web.pk
 # Add Agent public key
 # Download Agent Public key from S3 bucket
 aws s3 cp s3://lopihara/ssh_keys/agent.pb /home/agent/.ssh/agent.pb
-cat /home/agent/.ssh/agent.pb >> /home/agent/.ssh/authorized_keys
-rm /home/agent/.ssh/agent.pb
+mv /home/agent/.ssh/agent.pb /home/agent/.ssh/authorized_keys
 
 chmod 400 /home/agent/.ssh/web.pk
 chmod 600 /home/agent/.ssh/authorized_keys
