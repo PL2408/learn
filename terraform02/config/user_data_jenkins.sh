@@ -5,8 +5,9 @@ yum update -y
 yum install java git -y
 
 # add jenkins repository
-wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
 
 # install and start jenkins
 yum install jenkins -y
@@ -14,7 +15,8 @@ yum install jenkins -y
 service jenkins start
 
 # Create SWAP file 5GB
-dd if=/dev/zero of=/swapfile bs=128M count=40
+swapoff -a
+dd if=/dev/zero of=/swapfile bs=128M count=40 status=progres
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
