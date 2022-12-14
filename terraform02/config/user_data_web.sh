@@ -46,4 +46,4 @@ docker run -p 80:80 -v /home/web/html:/usr/share/nginx/html:ro -d nginx
 # custom PS1
 echo 'export PS1="\[\e[0;38;5;42m\]\u\[\e[0m\]@\[\e[0;38;5;39m\]web-server\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0;38;5;240m\]<\[\e[0;38;5;242m\]\t\[\e[0;38;5;241m\]>\[\e[0m\]:\[\e[0m\] "' >> /etc/bashrc
 
-#test webhook 2
+#test webhook 3
