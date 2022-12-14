@@ -16,14 +16,12 @@ service jenkins start
 
 # Create SWAP file 5GB
 swapoff -a
-dd if=/dev/zero of=/swapfile bs=128M count=40 status=progres
+dd if=/dev/zero of=/swapfile bs=128M count=40
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 
-# redirect port 80 to 8080
-iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 
 # custom PS1
 echo 'export PS1="\[\e[0;38;5;216m\]\u\[\e[0m\]@\[\e[0;38;5;39m\]jenkins-sever\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0;38;5;240m\]<\[\e[0;38;5;242m\]\t\[\e[0;38;5;241m\]>\[\e[0m\]:\[\e[0m\] "' >> /etc/bashrc
