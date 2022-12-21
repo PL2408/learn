@@ -1,0 +1,4 @@
+Generate right publiic and private key
+--------------------------------------
+
+ssh-keygen -b 2048 -t rsa

@@ -1,0 +1,16 @@
+
+view log files in docker container
+------------------------------------------------------------------------
+
+root@web-server[/home/web/html]<18:01:13>: docker exec -it 82 /bin/bash
+root@823c2c8f49f2:/# cd /var/log/
+root@823c2c8f49f2:/var/log# ll
+bash: ll: command not found
+root@823c2c8f49f2:/var/log# ls
+apt  btmp  dpkg.log  faillog  lastlog  nginx  wtmp
+root@823c2c8f49f2:/var/log# cd nginx/
+root@823c2c8f49f2:/var/log/nginx# ls
+access.log  error.log
+root@823c2c8f49f2:/var/log/nginx# tail -f error.log
+^C
+root@823c2c8f49f2:/var/log/nginx# tail -f access.log
