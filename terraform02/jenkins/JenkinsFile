@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('initialization') {
             steps {
-                sh "echo 'initialization'"
-                sh "sleep 5"
+                sh """
+                echo 'initialization'
+                sleep 5
+                """
             }
         }
         stage('project build') {
