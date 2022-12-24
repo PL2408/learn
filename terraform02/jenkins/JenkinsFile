@@ -17,8 +17,10 @@ pipeline {
         }
         stage('copy') {
             steps {
-                sh "touch file.txt"
-                sh "cp file.txt file1.txt"
+                sh """
+                touch file.txt
+                cp file.txt file1.txt
+                """
                 // scp html_page
             }
         }
