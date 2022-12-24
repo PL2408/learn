@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    stages {
+        stage('initialization') {
+            steps {
+                sh "echo 'initialization'"
+                sh "sleep 5"
+            }
+        }
+        stage('project build') {
+            steps {
+                echo 'project build!'
+                sh "sleep 10"
+            }
+        }
+        stage('copy') {
+            steps {
+                sh "touch file.txt"
+                sh "cp file.txt file1.txt"
+                // scp html_page
+            }
+        }
+        stage('delete files') {
+            steps {
+                echo "going to delete files in 10 sec..."
+                sh "sleep 10"
+                sh "rm -f file.txt file1.txt"
+            }
+        }
+    }
+}
