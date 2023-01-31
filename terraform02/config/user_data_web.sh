@@ -18,7 +18,7 @@ mkdir -p /home/web/.ssh/
 
 # Add Web public key
 aws s3 cp s3://lopihara/ssh_keys/web.pb /home/web/.ssh/web.pb
-mv /home/web/.ssh/web.pb /home/web/.ssh/authorized_keys
+cat /home/web/.ssh/web.pb >> /home/web/.ssh/authorized_keys
 
 # Set ownership for .ssh folder
 chown -R web:web /home/web/.ssh
