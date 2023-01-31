@@ -2,17 +2,30 @@ git clone - download repository from server
 
 git status - check status
 
-git pull - pulls latest changes from remote repository
-<my dailoy work with updates of some documents>
-git add <file name> - add changed file for commit
-git commit -m "comment for commit" - commit changes
-git push - push new commits to server
-mkdir /name/ - create a new directory
-cp 'file.txt' 'newfile.txt' - to copy file
-cd ../ - to change current directory
-rm 'file' - to delete file
-mv -v file.txt newfile.txt - to rename file
-dir - to list files in current directory
+git pull                              pulls latest changes from remote repository
+                                      <my dailoy work with updates of some documents>
+git add <file name>                   add changed file for commit
+git commit -m "comment for commit"    commit changes
+git push                              push new commits to server
+
+git log 
+git checkout -t <hash>
+git checkout -p <main hash>
+git checkout -b <name>                create new branch and name of branch
+git branch                            show all branches in project
+git branch -m   <name>                rename CURRENT branch
+git branch -d   <name>                delete branch (current branch impossible to delete, have to exit to main branch )
+
+
+Merge commit create for connection branches last commits
+
+
+git merge <feature branch name>       connected branches (insert when you in receiving branch)
+git cat-file -t
+git cat-file -p
+git clone <url>
+
+
 
 EBS
 lsblk - a command with which you can see how many volumes we have
@@ -27,80 +40,3 @@ sudo vim /etc/fstab - adding the newly created mount point to the FS tab file
 qw - save changes
 sudo umound /data - unmount data
 
-
-git (ubunta) cd /mnt/c/git
-
-EC2 commands for running
-
-This message is shown once a day. To disable it please create the
-/home/janaz/.hushlogin file.
-janaz@DESKTOP-L96TOG7:~$ ssh
-usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
-           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
-           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
-           [-i identity_file] [-J [user@]host[:port]] [-L address]
-           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
-           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
-           [-w local_tun[:remote_tun]] destination [command [argument ...]]
-janaz@DESKTOP-L96TOG7:~$ ll
-total 48
-drwxr-x--- 4 janaz janaz 4096 Jul 13 15:04 ./
-drwxr-xr-x 3 root  root  4096 Jul  8 17:33 ../
--rw------- 1 janaz janaz 2606 Jul 15 21:05 .bash_history
--rw-r--r-- 1 janaz janaz  220 Jan  6  2022 .bash_logout
--rw-r--r-- 1 janaz janaz 3771 Jan  6  2022 .bashrc
--rwxr-xr-x 1 janaz janaz  827 Jul 10 13:11 calc.py*
-drwxr-xr-x 2 janaz janaz 4096 Jul  8 17:35 .landscape/
--rw-r--r-- 1 janaz janaz    0 Jul 16 12:20 .motd_shown
--rw-r--r-- 1 janaz janaz  807 Jan  6  2022 .profile
--rw------- 1 janaz janaz   34 Jul  9 13:45 .python_history
-drwx------ 2 janaz janaz 4096 Jul 15 18:14 .ssh/
--rw-r--r-- 1 janaz janaz    0 Jul  9 13:32 .sudo_as_admin_successful 
--rw------- 1 janaz janaz 4507 Jul 10 13:11 .viminfo
-janaz@DESKTOP-L96TOG7:~$ cd .ssh/
-janaz@DESKTOP-L96TOG7:~/.ssh$ pwd
-/home/janaz/.ssh
-janaz@DESKTOP-L96TOG7:~/.ssh$ ssh -i "p_l.pem" ec2-user@3.121.207.225
-The authenticity of host '3.121.207.225 (3.121.207.225)' can't be established.
-ED25519 key fingerprint is SHA256:ooxaP7gnKguis3GOpnyoUqFi+Oh2loG50AbwuP2awuU.
-This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added '3.121.207.225' (ED25519) to the list of known hosts.
-
-       __|  __|_  )
-       _|  (     /   Amazon Linux 2 AMI
-      ___|\___|___|
-
-https://aws.amazon.com/amazon-linux-2/
-5 package(s) needed for security, out of 14 available
-Run "sudo yum update" to apply all updates.
-[ec2-user@ip-10-0-0-95 ~]$
-
-
-Keys
-
-
-janaz@DESKTOP-L96TOG7:~/.ssh$ ssh -i /home/janaz/.ssh/p_l.pem e^C-user@i.ua
-janaz@DESKTOP-L96TOG7:~/.ssh$ chmod 777 p_l.pem
-janaz@DESKTOP-L96TOG7:~/.ssh$ ll
-total 20
-drwx------ 2 janaz janaz 4096 Jul 21 15:24 ./
-drwxr-x--- 4 janaz janaz 4096 Jul 18 18:51 ../
--rw------- 1 janaz janaz 1598 Jul 21 15:24 known_hosts
--rw------- 1 janaz janaz 1376 Jul 21 15:24 known_hosts.old
--rwxrwxrwx 1 janaz janaz 1674 Jul 13 20:34 p_l.pem*
-janaz@DESKTOP-L96TOG7:~/.ssh$ ssh -i /home/janaz/.ssh/p_l.pem ec2-user@i.ua
-^C
-janaz@DESKTOP-L96TOG7:~/.ssh$ ssh -i /home/janaz/.ssh/p_l.pem ec2-user@8.8.8.8
-^C
-janaz@DESKTOP-L96TOG7:~/.ssh$ chmod 400 p_l.pem
-janaz@DESKTOP-L96TOG7:~/.ssh$ ll
-total 20
-drwx------ 2 janaz janaz 4096 Jul 21 15:24 ./
-drwxr-x--- 4 janaz janaz 4096 Jul 18 18:51 ../
--rw------- 1 janaz janaz 1598 Jul 21 15:24 known_hosts
--rw------- 1 janaz janaz 1376 Jul 21 15:24 known_hosts.old
--r-------- 1 janaz janaz 1674 Jul 13 20:34 p_l.pem
-
-1
-2
