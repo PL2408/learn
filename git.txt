@@ -17,16 +17,34 @@ git branch -m   <name>                rename CURRENT branch
 git branch -d   <name>                delete branch (current branch impossible to delete, have to exit to main branch )
 
 
-Merge commit create for connection branches last commits
+Merge commit create connection with branches last commits
 
 
 git merge <feature branch name>       connected branches (insert when you in receiving branch)
 git cat-file -t
 git cat-file -p
 git clone <url>
+git remote add origin <url>           add repo to github
+git branch -M main                    command to rename branch
+git push -u origin main               download files from local repo to github             
+
+-------------------token---------------------------------------------------
+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      (my token to git for 90 days)  01.02.2023
+---------------------------------------------------------------------------    
 
 
 
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------
 EBS
 lsblk - a command with which you can see how many volumes we have
 sudo file -s /dev/xvdb - see if the file system is mounted
