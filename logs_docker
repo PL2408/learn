@@ -1,6 +1,8 @@
 
 view log files in docker container
 ------------------------------------------------------------------------
+docker exec -it 82 /bin/bash                  # login inside container
+
 
 root@web-server[/home/web/html]<18:01:13>: docker exec -it 82 /bin/bash
 root@823c2c8f49f2:/# cd /var/log/

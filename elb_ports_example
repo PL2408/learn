@@ -1,0 +1,7 @@
+elb 777 443
+sg jenkins 8080 to elb 22 to my ip
+sg agent 22 to jenkins sg 22 to my ip
+sg web 22 to sg agent 22 to my ip
+
+
+tg 8080
