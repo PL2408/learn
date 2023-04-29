@@ -1,3 +1,29 @@
 Add alias
 ----------------------
 vim ~/.bashrc 
+ 
+
+
+
+ ###########################################
+# Server command prompt customization     #
+###########################################
+# PS1
+#cat <<EOT >> /etc/bashrc
+#
+## Command prompt customization - $PS1
+#if [ "`id -u`" -eq 0 ]; then
+#    PS1="\[\e[0;38;5;196m\]\u\[\e[0;38;5;220m\]@\[\e[0;92m\]\h\[\e[0m\]:\[\e[0;96m\]\w\[\e[0;38;5;220m\]#\[\e[0m\] "
+#else
+#    PS1="\[\e[0m\]\u\[\e[0;38;5;220m\]@\[\e[0;92m\]\h\[\e[0m\]:\[\e[0;96m\]\w\[\e[0;38;5;220m\]$\[\e[0m\] "
+#fi
+#
+## Handy aliases
+#alias ..="cd .."
+#alias ..2="cd ../.."
+#
+#EOT
+
+
+
+https://validator.w3.org/check

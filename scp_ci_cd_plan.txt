@@ -27,3 +27,10 @@ Setup Jenkins job
 		Create private key in ~.ssh/web.pk
 	Run Job
 Add trigger for job to pull changes and apply on production server
+
+
+
+
+
+
+scp -o StrictHostKeyChecking=no -i   learn_html/visit_card/index.html web@10.0.0.125:/home/web/html/
