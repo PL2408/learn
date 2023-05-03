@@ -36,7 +36,7 @@ docker run -v jiraVolume:/opt/tc/data --name="jira" -d -p 80:8080 atlassian/jira
 
 docker run -p 812:812 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk11
 
-25fc1768e44e55d9e4083acf74b7d9f87798cb37
+
 
 
 
@@ -155,24 +155,7 @@ fi
 
  I’ve just finished the Docker course. And I would like to share my impressions of it. This training was informative and interesting for me. I especially liked the part concerning declarative method of creating containers.  This is my refresher course and  I should  to say that the information is absorbed much better when repeated. Good luck in your studies and in your career!
 
-------------------------------------------------------------------------------------------------------------
 
-Docker Credentials:
------------------------
-token: dckr_pat_WbBuNIJsByKy9K9On7pQU7X1kcA  (token docker)
-
-TG credentials:
------------------------
-
-Use this token to access the HTTP API:                   6013533858:AAHg7WZIGoI4HV1921Mo0KcH0E7pm-HoC4k
-
-GIT credentials:
------------------------
-
-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  (git token)
-
- docker login -u lopihara
--------------------------------------------------------------------------------------------------------------
 
 \cr\lf
 \lf
