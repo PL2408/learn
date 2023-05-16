@@ -2,3 +2,5 @@ curl --form "uploaded_file=@index.html;type=text/html" --silent --show-error htt
 
 
 curl https://validator.w3.org/check -i -F output=json -F uploaded_file=@index.html|grep 'X-W3C-Validator-Status: Valid'
+
+curl 'https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>&text=asdf'
