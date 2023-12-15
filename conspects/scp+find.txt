@@ -1,0 +1,55 @@
+scp
+
+scp -i ~/.ssh/p_l.pem file.txt ec2-user@3.127.136.40:/home/ec2-user/ приєднання за допомогою ключа
+scp -i /home/<user_name>/.ssh/p_l.pem file.txt ec2-user@3.127.136.40:/home/ec2-user/ приєднання за допомогою ключа
+scp -i /mnt/c/keys/p_l.pem file.txt ec2-user@3.127.136.40:/home/ec2-user/ приєднання за допомогою ключа
+scp file.txt lopihara@192.168.0.109:/home/lopihara/  приєднання за допомогою користувача і пароля, та ip адреси
+
+find
+
+
+1. find /mnt/c/git/learn -type f -name vim.txt   знайти файл за назвою в поточному каталозі
+f: звичайний файл
+d: довідник
+l: символічне посилання
+c: символьні пристрої
+b: блокові прилади
+p: іменований канал (FIFO)
+s: розетка
+
+2. find . -type d   знайти всі каталоги в поточному робочому каталозі
+
+3. find . -type f -size -1M   приклад пошуку всіх файлів менше, ніж 1MB у поточному робочому каталозі
+	find . -type f -size +1M   більше 1MB
+
+4. find /mnt/c/git/learn -mtime +30 -daystart     перерахує всі файли в каталозі, які були змінені 30 або більше днів тому
+
+5. find . -perm /444    зіставить усі файли з дозволами на читання, встановленими для користувача
+
+6. find / -user jana   всі файли та каталоги, якими володіє користувач
+
+99.999999999% 11 of 9s
+
+----------------------------------------
+Щоденний режим роботи Петрика
+1. Вранці - git pull
+2. Зробив роботу - commit
+3. Ввечері - git push
+----------------------------------------
+
+jana@DESKTOP-L96TOG7:~$ aws s3 cp .ssh/p_l.pem s3://lopihara/ssh_keys/
+upload: .ssh/p_l.pem to s3://lopihara/ssh_keys/p_l.pem
+jana@DESKTOP-L96TOG7:~$ aws s3 cp .ssh/p_l.pem s3://lopihara/ssh_keys/
+
+Tasks
+1. Install AWS CLI on laptop
+2. Copy l_p.pem key from S3 to laptop
+
+{"ID":"38ddfd1a-2ba3-99cc-48b2-ada4a1e5026e","Operation":"OperationTypeApply","Info":"","Who":"DESKTOP-L96TOG7\\ptlaz@DESKTOP-L96TOG7","Version":"1.2.5","Created":"2022-12-05T12:32:42.9080592Z","Path":"lopihara/terraform/progect1_state"}
+
+
+----------------------
+1. Generate agent and web keys. Rename them to *.pk for PK, and *.pb ofr PK
+2. Upload these keys to S3 bucket
+3. Update user_data of Agent and Web to download respective keys
+----------------------

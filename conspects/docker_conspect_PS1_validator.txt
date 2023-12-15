@@ -1,0 +1,176 @@
+
+docker
+docker version
+docker pull <image>
+docker ps -a
+docker run <image> -d -p 80:80 name
+docker rm name 
+
+docker run -d --rm --name teamcity-server-instance  \
+    -v /home/jana/tc/data:/data/teamcity_server/datadir \
+    -v /home/jana/tc/logs:/opt/teamcity/logs  \
+    -p 8111:8111 \
+    jetbrains/teamcity-server
+
+
+docker run -v teamcity-server-instance:/data/teamcity_server/datadir -p 8111:8111 jetbrains/teamcity-server
+
+container
+-------------------------------------
+/									|
+/data 								|
+/data/teamcity_server/datadir		| -> /home/jana/tc/data
+/home 								|
+/opt 								|
+/opt/teamcity/logs 					| -> /home/jana/tc/logs
+/etc 								|
+/var								|
+/mnt								|
+-------------------------------------
+Network			8111				|
+-------------------------------------
+				 |
+				8111
+
+docker run -v jiraVolume:/opt/tc/data --name="jira" -d -p 80:8080 atlassian/jira-software
+
+docker run -p 812:812 -p 50000:50000 --restart=on-failure jenkins/jenkins:lts-jdk11
+
+
+
+
+
+#!/bin/bash -xe
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+
+yum update -y
+
+
+# Install Jenkins
+
+wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+
+
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+yum upgrade -y
+
+yum install java-11-openjdk -y
+
+yum install jenkins -y
+
+iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+systemctl daemon-reload
+
+# Custom PS1
+echo 'export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\][\w]\[$(tput sgr0)\]: \[$(tput sgr0)\]"' >> /etc/bashrc
+
+
+amazon-linux-extras install java-openjdk11
+
+---------------------------------------------------------------------------------------------------------------------------------
+ci/cd
+
+
+docker run -p 80:80 -v  nginx
+
+docker run --name some-nginx -v c:\temp:/var/log/nginx -v C:\git\final_project_1\website\dynamic_page:/usr/share/nginx/html:ro -d -p 8080:80 nginx:3.44
+
+docker run -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
+
+create static page in terraform:
+    0. Create Static page manualy
+    1. Create S3 bucket
+    2. Create CloudFront with ssl
+    3. ...
+
+
+    [3, 5, {1: "Yello", 2: "White", 3:"Green", "guys": {Borya: 44, Vitaliy: 43, Petya: 40}}, 9]
+    {1: "Yello", 2: "White", 3:"Green", "guys": {Borya: 44, Vitaliy: 43, Petya: 40}}
+        {Borya: 44, Vitaliy: 43, Petya: 40}
+
+
+On the agent:
+docker run -d -it --rm -p 80:80 web_page:latest
+    -d - detouch from the container after run
+    --rm - remove container after stop
+    -p - expose port 80 to 80
+docker build . image_name
+
+cd path_to_docker_file/
+docker build -t lopihara/dynamic-page:latest -t lopihara/dynamic-page:1.0 .
+docker login ...
+cat my_password.txt | docker login --username lopihara --password-stdin
+docker push
+docker push lopihara/dynamic-page --all-tags
+
+
+systemctl enable docker.service (add to userdata)
+usermod -a -G docker agent      (add to userdata)
+
+
+
+
+lopihara/dynamic-page:latest
+
+Task
+====================
+1. Build image with our HTML colde
+    docker build . image_name (verify the command)
+2. Verify image:
+    docker run -it mange_name (verify the command)
+    opent browser and check http://localhost/
+3. Add tags to image. Version 1.0, latest
+    search in google how to add tags to image
+4. Login to Docker Hub. Create user if not exist. in Web UI
+5. Login to docker from shell:
+    docker login
+6. Publish image in DockerHub:
+    docker push image_name:latest
+====================
+
+
+PS1
+
+
+jenkins server
+\[\e[0;38;5;39m\]ec2-user\[\e[0m\]@\[\e[0m\]\[\e[0;38;5;223m\]jenkins-server\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0m\]<\[\e[0m\]\$?\[$(tput sgr0)\]\[\e[0m\]>\[\e[0m\]:\[\e[0m\]
+
+
+jenkins agent
+\[\e[0;38;5;39m\]ec2-user\[\e[0m\]@\[\e[0m\]\[\e[0;38;5;229m\]jenkins-agent\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0m\]<\[\e[0m\]\$?\[$(tput sgr0)\]\[\e[0m\]>\[\e[0m\]:\[\e[0m\]
+
+
+web server
+\[\e[0;38;5;39m\]ec2-user\[\e[0m\]@\[\e[0m\]\[\e[0;38;5;49m\]web-server\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0m\]<\[\e[0m\]\$?\[$(tput sgr0)\]\[\e[0m\]>\[\e[0m\]:\[\e[0m\]
+
+
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+
+ I’ve just finished the Docker course. And I would like to share my impressions of it. This training was informative and interesting for me. I especially liked the part concerning declarative method of creating containers.  This is my refresher course and  I should  to say that the information is absorbed much better when repeated. Good luck in your studies and in your career!
+
+
+
+\cr\lf
+\lf
+\cr
+
+
+
+
+
+ PS1='\[\e[0;38;5;38m\]\u\[\e[0m\]\[\e[0m\]@\[\e[0m\]\[\e[0;38;5;43m\]web_server\[\e[0m\][\[\e[0m\]\w\[\e[0m\]]\[\e[0m\]<\[\e[0m\]\$?\[$(tput sgr0)\]\[\e[0m\]>\[\e[0m\]:\[\e[0m\]
+
+
+ m:aws:
+
+ https://github.com/validator/validator/releases/download/20.6.30/vnu.jar_20.6.30.zip
+
+ curl -L https://github.com/validator/validator/releases/download/20.6.30/vnu.jar_20.6.30.zip -o /opt/vnu.jar_20.6.30.zip
+ 
