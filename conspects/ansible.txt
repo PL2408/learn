@@ -1,0 +1,113 @@
+
+Ansible - система керування конфігураціями написана на Python
+
+--------------------------------------------------------------
+.
+├── apache_playbook.yml
+└── roles
+    └── apache                                                # структура папок в проекті для запуску (inventory файл може безпосередньо знаходитись в папці з файлом apache_playbook.yml
+        └── tasks                                               або в файлі за замовченням /etc/ansible/hosts)
+            └── main.yml
+--------------------------------------------------------------
+
+
+Команди:
+
+ansible "hosts" -a command                                    # імперативний приклад використання команди (може бути використана для перезавантаження сервера, тощо...)
+ansible-playbook -i inventory.ini "playbook_name".yml         # команда для запуску playbook, в проекті де файли знаходяться в одній папці
+ansible-playbook --help                                       # покаже ключі для додаткових значень
+ansible "hosts" -m ping                                       # перевіряє з'єднання з хостом 
+-v -vv -vvv                                                   # debug режим (відображає додаткову інформацію при виконанні playbook)
+
+
+
+Inventory:                                                    # описує хости (може містити різні групи та об'єднувати їх), тип з'єднання, користувача та пароль. З'єднання Linux (ssh), Windows (WinR)
+[web_servers]                                                 # назва групи серверів
+petro_ec2                                                     # даний блок містить назву сервера з яким буде здійснюватись з'єднання
+
+ansible_ssh_host=3.76.103.98                                  # для windows ansible_winrm                               
+ansible_ssh_user=ec2-user                                                          
+ansible_ssh_private_key_file=/home/petro/.ssh/test_keys.pem   # для windows ansible_password (linux ssh_pass)  
+
+
+Playbook:                                                     # окремий yaml файл, що містить набір завдань для виконання на хостах
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- hosts: petro_ec2                                            # складається з модулів (даний модуль являється list а разом весь файл це list of dictionaries), викликає хости з inventory файла
+  become: true
+  tasks:                                                      # в list не має значення посрядок записів і не впливає на виконання
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    - name: Install Apache                                    # в dictionary є ключовим порядок записів для виконання завдань
+      yum:
+        name: httpd
+        state: present                                        # в даному випадку yum, systemd і до прикладу (command,script,service) - модулі які запускають завдання
+                                                              # ansible-doc -l покаже список доступних модулів для виконання завдань
+    - name: Start Apache service
+      systemd:
+        name: httpd
+        state: started
+        enabled: yes
+--- ✄ -------------------------
+
+Variables:
+
+inventory приклад
+ansible_ssh_host= "-змінна"                             
+ansible_ssh_user= "-змінна"
+
+Playbook приклад
+ - 
+    name: add DNS server to resolv.conf
+    hosts: localhost     
+    vars:
+      dns_server: 10.1.250.10
+    tasks:
+
+     - lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver {{ dns_server }}'                   # використання змінної
+
+# якщо можна варіювати якісь значення то краще внести їх в inventory файл та використовувати в Playbook викликаючи '{{ name }}' записом в подвійних фігурних дужках
+
+# також всі змінні можна перенести у файл змінних, наприклад variables.yaml що міститиме запис http_port: 80 на який буде посилатися inventory з записом http_port=80 виконається разом із запуском Playbook зі змінною port: '{{ http_port }}'/tcp
+
+# підключити variables.yaml в Playbook можна дерективою 
+vars_files:
+  - variables.yaml
+
+Цей формат з використанням змінних в Playbook називається JINJA2 Templating
+--------------------------------------------------------------------
+Conditions:
+--- ✄ -------------------------
+
+
+ 
+Умови які допомагають створювати більш складну логіку в Playbook
+Приклад написання: 
+  when: ansible_host == "name" 
+Для перевірки рівноправності та виконання завдань на декількох хостах використовується "or"
+Приклад написання: 
+  when: ansible_host == "name1" or
+        ansible_host == "name2"
+
+# Приклад:
+
+- 
+
+    name: install nginx
+    hosts: all
+    tasks:
+
+      -name: install nginx on ubuntu
+       apt:
+          name: nginx
+          state: present
+         when: ansible_os_family == "Debian" and                # прийме у виконання модуль apt тільки для версії 16.04
+               ansible_distribution_version == "16.04"
+
+      -name: install nginx on centos
+       yum:
+           name: nginx
+           state: present
+         when: ansible_os_family ==  "RedHat" or
+               ansible_os_family ==  "Suse"
+
