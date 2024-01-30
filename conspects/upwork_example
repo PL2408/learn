@@ -1,0 +1,25 @@
+1. Review AWS account:
+	a) IAM
+	b) Network configuration
+	c) Security (SG, RT, NACL)
+	d) Backup
+	e) Monitoring (CloudWatch)
+	f) CloudFront
+	g) Costs, Budgets
+	h) Access
+	i) SSL usage
+2. Review project configuration
+	a) Regions
+	b) Company Hierarhy (devs, devops, managers?) 
+3. Server installation
+	a) Automation installation
+	b) Services Sercurity
+4. Processes Automation (GitHub Actions)
+5. Project Architecture review
+6. IaC
+
+
+
+
+
+# echo $(echo ${1~~}| rev)
