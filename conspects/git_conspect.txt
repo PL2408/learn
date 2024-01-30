@@ -28,9 +28,7 @@ git remote add origin <url>           add repo to github
 git branch -M main                    command to rename branch
 git push -u origin main               download files from local repo to github             
 
--------------------token---------------------------------------------------
-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      (my token to git for 90 days)  01.02.2023
----------------------------------------------------------------------------    
+   
 
 
 

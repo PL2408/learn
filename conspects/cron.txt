@@ -1,0 +1,42 @@
+Створення cron задачі, яка буде робити резервні копії файлу /etc/nginx/nginx.conf
+
+скрипт резервного копіювання:
+
+Створюю файл, наприклад, nginx_backup.sh, який буде виконувати резервне копіювання:
+
+vim nginx_backup.sh
+
+--- ✄ -------------------------
+
+Скрипт:
+
+#!/bin/bash
+
+# Шлях до файлу конфігурації nginx
+NGINX_CONF="/etc/nginx/nginx.conf"
+
+# Шлях до каталогу для зберігання резервних копій
+BACKUP_DIR="/etc/nginx/conf.d/"
+
+# Ім'я файлу резервної копії з часовою відміткою
+BACKUP_FILE="${BACKUP_DIR}nginx-$(date +%s).conf.bak"
+
+cp $NGINX_CONF $BACKUP_FILE
+
+--- ✄ -------------------------
+
+chmod +x nginx_backup.sh
+
+
+Додаю задачу в cron:
+Відкриваю редактор cron:
+
+crontab -e
+
+Додаю наступний рядок в кінець файлу, щоб задати щоденну резервну копію:
+
+0 0 * * * /повний/шлях/до/nginx_backup.sh
+
+априклад:
+
+0 0 * * * /home/ubuntu/nginx_backup.sh

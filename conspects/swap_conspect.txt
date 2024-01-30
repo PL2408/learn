@@ -1,0 +1,11 @@
+sudo fallocate -l 1G /swap_file                                     # створення swap_file
+
+sudo mkswap /swap_file                                              # команда  mkswap, щоб створити область підкачки та надати файлу ідентифікатор UUID.
+
+echo '/swap_file swap swap defaults 0 0' | sudo tee -a /etc/fstab   # забезпечує постійне монтування файлу підкачки при завантаженні системи
+
+sudo swapon --show                                                  # команда swapon для активації файлу підкачки
+
+sudo reboot
+
+# Після перезавантаження системи ми переконалися, що файли підкачки правильно налаштовані, використовуючи команду free -h | grep -i 'swap' та swapon --show 

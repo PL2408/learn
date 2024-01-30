@@ -1,0 +1,37 @@
+Інфраструктура побудована на платформі AWS і включає такі елементи:
+
+VPC з відповідною rout table та Internet Gateway
+Дві публічні subnet для економії коштів на Nat Gateway
+Security groups для EC2 та Load Balancer
+Route 53 запис, спрямований на Load Balancer з двома listeners (443 та 777 порти)
+Load Balancer налаштований для пересилання трафіку на EC2 (web server) через target group на 80 порту, де запущений Nginx в Docker контейнері із сайтом на HTML, CSS та JavaScript.
+
+Також є listener на 777 порту, що пересилає трафік на target group на 8080 порту, призначений для EC2 (Jenkins server), що також працює в Docker контейнері.
+
+В UserData EC2 instances описані команди, що виконуються під час їх запуску.
+
+Для з'єднання використовуються приватні та публічні ключі, які зберігаються в S3 bucket.
+
+Для Jenkins Agent і Web Server встановлено EC2 IAM role.
+
+Використовується AWS SSL Certificate сервіс для забезпечення безпечного з'єднання.
+
+Для постійного доступу до сайту використовуються принципи динамічної та статичної веб-сторінки за допомогою CloudFront та SSL Certificate, розташованих в us-east-1 зоні доступності.
+
+Load Balancer перенаправляє трафік за допомогою записів в Route53 primary та secondary.
+
+Описаний процес CI/CD на Jenkins Server і Jenkins Agent, включаючи такі кроки:
+
+Git clone з GitHub
+Вебхук тригерує джобу, яка виконується на Jenkins Agent
+В Jenkins файлі описані кроки для CI/CD для динамічних та статичних сторінок
+Публікація image в DockerHub
+Розгортання на Web Server
+Сповіщення в Telegram про успішне або неуспішне виконання завдання
+Для статичних сторінок - перевірка коду, публікація image в S3 bucket та сповіщення в Telegram.
+
+
+
+
+опис
+-
