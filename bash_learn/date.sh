@@ -1,0 +1,3 @@
+TODAY=$(date)
+
+echo $TODAY
