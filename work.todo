@@ -6,6 +6,7 @@ Main strategy:
 
 
 BAU Tasks:
+  ☐ Write Bash script create file with current date in name, create_file.sh: -> "2024.02.03_12.19.19.199.txt". Hint
   ✔ Add this file to GIT and commit it @done (24-02-03 11:29)
   ✔ Daily Bash scripting @done (24-01-28 19:36)
 
