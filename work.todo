@@ -6,7 +6,8 @@ Main strategy:
 
 
 BAU Tasks:
-  ☐ Write Bash script create file with current date in name, create_file.sh: -> "2024.02.03_12.19.19.199.txt". Hint
+  ☐ rewrite todays script with checking all lines
+  ✔ Write Bash script create file with current date in name, create_file.sh: -> "2024.02.03_12.19.19.199.txt". Hint @done (24-02-04 10:07)
   ✔ Add this file to GIT and commit it @done (24-02-03 11:29)
   ✔ Daily Bash scripting @done (24-01-28 19:36)
 
@@ -26,3 +27,11 @@ main
  |  | - comit work.todo
  | /|
  |/ |
+
+5 % 3 = 2
+
+7 % 2 = 1
+
+25 % 6 = 1
+
+9 % 3 = 0
